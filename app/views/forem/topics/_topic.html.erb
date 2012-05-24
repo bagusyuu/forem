@@ -20,7 +20,7 @@
     </div>
   </td>
   <td class='latest-post'>
-    <%= topic.posts.by_created_at.last.user.name.to_s -%>
+    <%= link_to_latest_post(topic.posts.by_created_at.last.user) topic.posts.by_created_at.last.user.name.to_s -%>
   </td>
   <td class='posts-count'><%= topic.posts.count %></td>
   <td class='views-count'><%= topic.views_count %></td>
