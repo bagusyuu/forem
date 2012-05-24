@@ -18,7 +18,7 @@
     <div class='started-by'><%= t "started_by" %><%= topic.posts.by_created_at.first.user %></div>
   </td>
   <td class='latest-post'>
-    <%= link_to_latest_post(topic.posts.by_created_at.last.name) -%>
+    <%= link_to_latest_post(topic.posts.by_created_at.last) -%>
   </td>
   <td class='posts-count'><%= topic.posts.count %></td>
   <td class='views-count'><%= topic.views_count %></td>
