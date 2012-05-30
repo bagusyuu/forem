@@ -71,7 +71,7 @@ module Forem
       end
 
       def topic_not_pending_review
-        joins(:topic).where Topic.arel_table[:state].eq('approved')
+        self.where Topic.arel_table[:state].eq('approved')
       end
 
       def moderate!(posts)
