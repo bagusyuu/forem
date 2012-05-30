@@ -5,7 +5,7 @@ module Forem
     before_filter :block_spammers, :only => [:new, :create]
 
     def new
-      authorize! :reply, @topic
+      #authorize! :reply, @topic
       @post = @topic.posts.build
       @reply_to_post = @topic.posts.find_by_id(params[:reply_to_id])
 
@@ -15,7 +15,7 @@ module Forem
     end
 
     def create
-      authorize! :reply, @topic
+      #authorize! :reply, @topic
       if @topic.locked?
         flash.alert = t("forem.post.not_created_topic_locked")
         redirect_to [@topic.forum, @topic] and return
@@ -33,12 +33,12 @@ module Forem
     end
 
     def edit
-      authorize! :edit_post, @topic.forum
+      #authorize! :edit_post, @topic.forum
       @post = Post.find(params[:id])
     end
 
     def update
-      authorize! :edit_post, @topic.forum
+      #authorize! :edit_post, @topic.forum
       @post = Post.find(params[:id])
       if @post.owner_or_admin?(forem_user) and @post.update_attributes(params[:post])
         redirect_to [@topic.forum, @topic], :notice => t('edited', :scope => 'forem.post')
