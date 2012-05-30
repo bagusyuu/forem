@@ -17,13 +17,13 @@ module Forem
     end
 
     def new
-      authorize! :create_topic, @forum
+     #authorize! :create_topic, @forum
       @topic = @forum.topics.build
       @topic.posts.build
     end
 
     def create
-      authorize! :create_topic, @forum
+      #authorize! :create_topic, @forum
       @topic = @forum.topics.build(params[:topic])
       @topic.user = forem_user
       if @topic.save
@@ -66,14 +66,14 @@ module Forem
     private
     def find_forum
       @forum = Forem::Forum.find(params[:forum_id])
-      authorize! :read, @forum
+      #authorize! :read, @forum
     end
 
     def find_topic
       begin
         scope = forem_admin_or_moderator?(@forum) ? @forum.topics : @forum.topics.visible.approved_or_pending_review_for(forem_user)
         @topic = scope.find(params[:id])
-        authorize! :read, @topic
+        #authorize! :read, @topic
       rescue ActiveRecord::RecordNotFound
         flash.alert = t("forem.topic.not_found")
         redirect_to @forum and return
