@@ -22,6 +22,7 @@ module Forem
       end
       @post = @topic.posts.build(params[:post])
       @post.user = forem_user
+      @post.state = 'approved'
       if @post.save
         flash[:notice] = t("forem.post.created")
         redirect_to forum_topic_url(@topic.forum, @topic, :page => last_page)
