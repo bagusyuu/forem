@@ -1,3 +1,4 @@
+<div class="bodyForem">
 <%= render :partial => 'forem/forums/head', :locals => { :forum => @topic.forum } %>
 
 <h2><%= t("forem.post.new") %></h2>
@@ -16,3 +17,4 @@
   <%= render :partial => "form", :locals => { :f => f } %>
   <%= f.submit t("forem.post.buttons.reply") %>
 <% end %>
+</div>
